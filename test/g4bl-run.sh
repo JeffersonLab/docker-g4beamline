@@ -1,0 +1,1 @@
+g4bl ./g4bl-test.g4bl viewer=none
