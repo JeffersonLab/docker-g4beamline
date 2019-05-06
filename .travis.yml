@@ -1,0 +1,16 @@
+sudo: required
+
+services:
+    - docker
+
+env:
+    global:
+        - IMAGE_NAME=wmoore28/g4beamline
+
+script:
+    - docker build -t "$IMAGE_NAME" .
+
+after_success:
+    - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+    - docker push "$IMAGE_NAME"
+
